@@ -6,8 +6,8 @@ COMPONENT=rabbitmq
 
 echo -n "Configuring and Installing dependency:"
 
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash  &>> ${LOGFILE}
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash  &>> ${LOGFILE}
 stat $?
 # yum install curl gnupg apt-transport-https -y &>> ${LOGFILE}
 # yum install -y erlang-base &>> ${LOGFILE}
