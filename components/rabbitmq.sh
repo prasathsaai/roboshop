@@ -5,11 +5,15 @@ source components/common.sh
 COMPONENT=rabbitmq
 
 echo -n "Configuring and Installing dependency:"
-yum install curl gnupg apt-transport-https -y &>> ${LOGFILE}
-yum install -y erlang-base &>> ${LOGFILE}
+
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
+stat $?
+# yum install curl gnupg apt-transport-https -y &>> ${LOGFILE}
+# yum install -y erlang-base &>> ${LOGFILE}
 # yum install https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh -y &>> ${LOGFILE} 
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash  &>> ${LOGFILE} 
-stat $? 
+#curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash  &>> ${LOGFILE} 
+ 
 
 echo -n "Installing RabbitMQ: "
 yum install rabbitmq-server -y &>> ${LOGFILE} 
