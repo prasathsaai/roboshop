@@ -44,7 +44,7 @@ DOWNLOAD_AND_EXTRACT() {
 
 CONFIG_SVC() {
     echo -n "Configuring the Systemd file: "
-    sed -i -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/'  -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/${FUSER}/${COMPONENT}/systemd.service 
+    sed -i -e 's/CARTHOST/cart.awsdevops.internal/' -e 's/USERHOST/user.awsdevops.internal/' -e 's/AMQPHOST/rabbitmq.awsdevops.internal/' -e 's/CARTENDPOINT/cart.awsdevops.internal/' -e 's/DBHOST/mysql.awsdevops.internal/' -e 's/REDIS_ENDPOINT/redis.awsdevops.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.awsdevops.internal/' -e 's/MONGO_DNSNAME/mongodb.awsdevops.internal/'  -e 's/MONGO_ENDPOINT/mongodb.awsdevops.internal/' /home/${FUSER}/${COMPONENT}/systemd.service 
     mv /home/${FUSER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
     stat $? 
 
