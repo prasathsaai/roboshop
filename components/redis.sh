@@ -11,7 +11,7 @@ curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.r
 stat $?
 
 echo -n "Installing $COMPONENT: "
-yum install redis-6.2.7 -y &>> /tmp/${COMPONENT}.log 
+yum install redis-6.2.x -y &>> /tmp/${COMPONENT}.log 
 stat $? 
 
 echo -n "Whitelisting the redis config : "
