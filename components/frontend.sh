@@ -8,9 +8,9 @@ yum install nginx -y   >> /tmp/frontend.log
 
 systemctl enable nginx 
 
-# echo -n "Starting Nginx: "
-# systemctl start nginx 
-# stat $?
+echo -n "Starting Nginx: "
+systemctl start nginx 
+stat $?
 
 echo -n "Downloading the Code"
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
@@ -33,18 +33,18 @@ mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
 
-for component in catalogue user cart shipping payment; do 
-    echo -n "Updating the proxy file"
-    sed -i -e "/${component}/s/localhost/${component}.awsdevops.internal/"  /etc/nginx/default.d/roboshop.conf
-    stat $?
-done
+# for component in catalogue user cart shipping payment; do 
+#     echo -n "Updating the proxy file"
+#     sed -i -e "/${component}/s/localhost/${component}.awsdevops.internal/"  /etc/nginx/default.d/roboshop.conf
+#     stat $?
+# done
 
-echo -n "Starting Nginx: "
-systemctl start nginx 
-stat $?
-
-# echo -n "Starting Ngnix: "
-# systemctl restart nginx
+# echo -n "Starting Nginx: "
+# systemctl start nginx 
 # stat $?
+
+echo -n "Starting Ngnix: "
+systemctl restart nginx
+stat $?
 
 # source is a command to import a file and run it locally
