@@ -33,11 +33,11 @@ mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
 
-# for component in catalogue user cart shipping payment; do 
-#     echo -n "Updating the proxy file"
-#     sed -i -e "/${component}/s/localhost/${component}.awsdevops.internal/"  /etc/nginx/default.d/roboshop.conf
-#     stat $?
-# done
+for component in catalogue user cart shipping payment; do 
+    echo -n "Updating the proxy file"
+    sed -i -e "/${component}/s/localhost/${component}.awsdevops.internal/"  /etc/nginx/default.d/roboshop.conf
+    stat $?
+done
 
 # echo -n "Starting Nginx: "
 # systemctl start nginx 
