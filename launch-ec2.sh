@@ -24,6 +24,7 @@ create-server() {
     echo "Creating Route53 Record . . . . :"
 
     sed -e "s/PRIVATEIP/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}-${ENV}/" r53.json  >/tmp/record.json 
+    chmod +x /tmp/record.json 
     aws route53 change-resource-record-sets --hosted-zone-id ${ZONEID} --change-batch file:///tmp/record.json | jq 
 }
 
