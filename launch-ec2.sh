@@ -23,8 +23,8 @@ create-server() {
     echo "Spot Instance $COMPONENT is ready: "
     echo "Creating Route53 Record . . . . :"
 
-    sudo sed -e "s/PRIVATEIP/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}-${ENV}/" r53.json  >record.json  
-    aws route53 change-resource-record-sets --hosted-zone-id ${ZONEID} --change-batch file:///record.json | jq 
+    sed -e "s/PRIVATEIP/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}-${ENV}/" r53.json  >/tmp/record.json 
+    aws route53 change-resource-record-sets --hosted-zone-id ${ZONEID} --change-batch file:///tmp/record.json | jq 
 }
 
 if [ "$1" == "all" ] ; then 
@@ -35,4 +35,4 @@ if [ "$1" == "all" ] ; then
      done
 else 
      create-server
-fi  
+fi 
