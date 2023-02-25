@@ -23,7 +23,7 @@ create-server() {
     echo "Spot Instance $COMPONENT is ready: "
     echo "Creating Route53 Record . . . . :"
 
-    sudo sed -e "s/PRIVATEIP/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}-${ENV}/" r53.json  >/record.json  
+    sudo sed -e "s/PRIVATEIP/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}-${ENV}/" r53.json  >record.json  
     aws route53 change-resource-record-sets --hosted-zone-id ${ZONEID} --change-batch file:///record.json | jq 
 }
 
